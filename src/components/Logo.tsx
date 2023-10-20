@@ -4,18 +4,20 @@ import styled from 'styled-components'
 const Container = styled.div`
 	position: relative;
 	
-	margin: 170px calc(100vw / 24) 0 calc(100vw / 24);
-	
 	display: flex;
 	justify-content: start;
-	align-items: flex-start;
+	align-items: center;
+
+	@media (max-width: 1000px) {
+		margin-top: 15%;
+	}
 `
 
 const Header = styled.h1`
 	position: relative;
-	
+
 	width: min-content;
-	
+
 	line-height: 120%;
 	word-spacing: 100vw;
 	font-weight: 700;
@@ -23,7 +25,6 @@ const Header = styled.h1`
 
 	&:before {
 		content: '';
-		
 		position: absolute;
 		left: calc(-2px + 100vw / -24);
 
@@ -31,6 +32,14 @@ const Header = styled.h1`
 		height: 100%;
 		
 		background: linear-gradient(180deg, var(--accent-color1) -5%, var(--accent-color2) 85%);
+
+		@media (max-width: 1000px) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		font-size: 20px;
 	}
 `
 
@@ -42,4 +51,4 @@ const Logo: React.FC<{ children: string }> = ({ children }) => {
 	)
 }
 
-export default Logo
+export { Logo }

@@ -3,11 +3,12 @@ import styled from 'styled-components'
 
 import { IContent } from '../types/content'
 
-import Logo from './Logo'
+import { Logo } from './Logo'
 import Header from './Header'
 import Navigation from './Navigation'
 import Slider from './Slider'
-import ButtonsCircle from './ButtonsCircle'
+import { Buttons } from './Buttons'
+import { Decoration } from './Decoration'
 
 const Screen = styled.div`
 	width: 100vw;
@@ -23,12 +24,28 @@ const Screen = styled.div`
 const Container = styled.div`
 	position: relative;
 
-	width: calc(100vw * 18 / 24);
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
 	height: 100%;
 
-	margin: 0 calc(100vw * 2 / 24) 0 calc(100vw * 4 / 24);
-	border-left: 1px solid var(--stroke-color);
-	border-right: 1px solid var(--stroke-color);
+	margin: 0 calc(100% * 2 / 24) 0 calc(100% * 4 / 24);
+
+
+	
+	
+	@media (max-width: 1000px) {
+		margin: 0;
+		padding: 20px;
+	}
+`
+
+const Main = styled.div`
+	padding: calc(100% / 18);
+	@media (max-width: 1000px) {
+		padding: 0;
+	}
 `
 
 const Block: React.FC<{ content: IContent }> = ({ content }) => {
@@ -41,21 +58,27 @@ const Block: React.FC<{ content: IContent }> = ({ content }) => {
 	return <>
 		<Screen>
 			<Container>
-				<ButtonsCircle
+				<Decoration />
+
+				<Main>
+					<Logo>{content.blockName}</Logo>
+
+					<Header>{content.periods[activeIndex].years}</Header>
+					<Navigation
+						active={activeIndex}
+						total={content.periods.length}
+						onChange={changeActiveIndex} />
+
+					<Slider slides={content.periods[activeIndex].events} />
+				</Main>
+
+				<Buttons
 					active={activeIndex}
 					total={content.periods.length}
 					label={content.periods[activeIndex].field}
 					onChange={changeActiveIndex} />
-
-				<Logo>{content.blockName}</Logo>
-				<Header>{content.periods[activeIndex].years}</Header>
-				<Navigation
-					active={activeIndex}
-					total={content.periods.length}
-					onChange={changeActiveIndex} />
-				<Slider slides={content.periods[activeIndex].events} />
 			</Container>
-		</Screen >
+		</Screen>
 	</>
 }
 

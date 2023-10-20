@@ -4,17 +4,26 @@ import styled, { css } from 'styled-components'
 import { INavigation } from '../types/components'
 
 const Container = styled.div`
-	position: relative;
+	width: min-content;
+	margin: 20px 0;
 
-	margin: 56px calc(100vw / 24);
+	position: absolute;
+	top: calc(100% * 5 / 9 );
 
 	display: flex;
 	justify-content: start;
+	align-items: center;
+
+	@media (max-width: 1000px) {
+		position: sticky;
+		top: 85%;
+		margin: 0;
+		z-index: 999;
+		
+	}
 `
 
 const NavArea = styled.div`
-	width: min-content;
-
 	display: flex;
 	flex-direction: column;
 `
@@ -26,12 +35,16 @@ const Counter = styled.div`
 	font-size: 14px;
 	line-height: 18px;
 	text-align: left;
+
+	@media (max-width: 1000px) {
+		margin-bottom: 0;
+	}
 `
 
 const Buttons = styled.div`
 	display: flex;
 	justify-content: space-between;
-	gap: 20px;
+	gap: 8px;
 `
 
 const Button = styled.button`
@@ -50,6 +63,11 @@ const Button = styled.button`
 	&:hover {
 		border: 1px solid var(--base-color);
 	}
+
+	@media (max-width: 1000px) {
+		width: 25px;
+		height: 25px;
+	}
 `
 
 const Arrow = styled.div<{ direction: 'left' | 'right' }>`
@@ -60,6 +78,10 @@ const Arrow = styled.div<{ direction: 'left' | 'right' }>`
 	border-width: 0 2px 2px 0;
 
 	display: inline-block;
+
+	@media (max-width: 1000px) {
+		padding: 2px;
+	}
 
 	${props => {
 		if (props.direction === 'left') {

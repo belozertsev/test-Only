@@ -10,8 +10,13 @@ import 'swiper/css/navigation'
 import { IEvent } from '../types/content'
 
 const Container = styled.div`
-	position: relative;
-	margin: 0 calc(100vw / 24);
+	position: sticky;
+	top: calc(100% * 14 / 18 );
+
+	@media (max-width: 1000px) {
+		position: absolute;
+		top: 50%;
+	}
 `
 
 const Header = styled.h1`
@@ -21,6 +26,10 @@ const Header = styled.h1`
 	line-height: 30px;
 	text-align: left;
 	color: #3877EE;
+
+	@media (max-width: 1000px) {
+		font-size: 16px;
+	}
 `
 
 const Paragraph = styled.p`
@@ -30,12 +39,19 @@ const Paragraph = styled.p`
 	font-weight: 400;
 	line-height: 30px;
 	text-align: left;
+
+	@media (max-width: 1000px) {
+		font-size: 14px;
+		line-height: 20px;
+
+	}
 `
 
 const Slider: React.FC<{ slides: IEvent[] }> = ({ slides }) => {
 	return (
 		<Container>
 			<Swiper
+				style={{width: 'calc(100vw * 16/24)'}}
 				modules={[Navigation]}
 				navigation={true}
 				spaceBetween={80}
