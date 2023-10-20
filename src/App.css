@@ -11,5 +11,11 @@
 	font-family: 'PT Sans', sans-serif;
 	font-weight: 400;
 	font-size: 20px;
-	color: #42567A;
+	color: var(--base-color);
+
+	--bg-color: #F4F5F9;
+	--base-color: #42567A;
+	--accent-color1: #5D5FEF;
+	--accent-color2: #EF5DA8;
+	--stroke-color: #E2E5EB;
 }

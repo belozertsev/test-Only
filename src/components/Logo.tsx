@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const Header = styled.h1`
 	position: relative;
+	
 	width: min-content;
 	
 	line-height: 120%;
@@ -29,11 +30,11 @@ const Header = styled.h1`
 		width: 5px;
 		height: 100%;
 		
-		background: linear-gradient(180deg, #3877EE -5%, #EF5DA8 85%);
+		background: linear-gradient(180deg, var(--accent-color1) -5%, var(--accent-color2) 85%);
 	}
 `
 
-const Logo = ({ children }) => {
+const Logo: React.FC<{ children: string }> = ({ children }) => {
 	return (
 		<Container>
 			<Header>{children}</Header>

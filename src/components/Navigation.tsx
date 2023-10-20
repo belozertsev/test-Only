@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+import { INavigation } from '../types/components'
+
 const Container = styled.div`
 	position: relative;
 
@@ -35,19 +37,25 @@ const Buttons = styled.div`
 const Button = styled.button`
 	width: 50px;
 	height: 50px;
+
+	border-radius: 50%;
+	border: 1px solid var(--stroke-color);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 50%;
-	border: 1px solid #303E58;
-	background-color: #F4F5F9;
+	
+	background-color: var(--bg-color);
+
+	&:hover {
+		border: 1px solid var(--base-color);
+	}
 `
 
-const Arrow = styled.div`
+const Arrow = styled.div<{ direction: 'left' | 'right' }>`
 	position: relative;
 	
 	padding: 4px;
-
 	border: solid #42567A;
 	border-width: 0 2px 2px 0;
 
@@ -69,7 +77,7 @@ const Arrow = styled.div`
 	}}
 `
 
-const Navigation = ({ active, total, onChange }) => {
+const Navigation: React.FC<INavigation> = ({ active, total, onChange }) => {
 	return (
 		<Container>
 			<NavArea>

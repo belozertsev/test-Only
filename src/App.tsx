@@ -4,7 +4,7 @@ import './App.css'
 import data from './data'
 import Block from './components/Block'
 
-function App() {
+const App: React.FC = () => {
 	return (
 		<div className='App'>
 			<Block content={data} />

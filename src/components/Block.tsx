@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { IContent } from '../types/content'
+
 import Logo from './Logo'
 import Header from './Header'
 import Navigation from './Navigation'
@@ -15,7 +17,7 @@ const Screen = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	background-color: #F4F5F9;
+	background-color: var(--bg-color);
 `
 
 const Container = styled.div`
@@ -25,18 +27,18 @@ const Container = styled.div`
 	height: 100%;
 
 	margin: 0 calc(100vw * 2 / 24) 0 calc(100vw * 4 / 24);
-	border-left: 1px solid #42567A;
-	border-right: 1px solid #42567A;
+	border-left: 1px solid var(--stroke-color);
+	border-right: 1px solid var(--stroke-color);
 `
 
-const Block = ({ content }) => {
-	const [activeIndex, setActiveIndex] = React.useState(0)
+const Block: React.FC<{ content: IContent }> = ({ content }) => {
+	const [activeIndex, setActiveIndex] = React.useState<number>(0)
 
-	const changeActiveIndex = (index) => {
+	const changeActiveIndex = (index: number) => {
 		setActiveIndex(index)
 	}
 
-	return (
+	return <>
 		<Screen>
 			<Container>
 				<ButtonsCircle
@@ -54,7 +56,7 @@ const Block = ({ content }) => {
 				<Slider slides={content.periods[activeIndex].events} />
 			</Container>
 		</Screen >
-	)
+	</>
 }
 
 export default Block
